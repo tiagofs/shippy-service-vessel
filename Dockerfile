@@ -10,7 +10,7 @@ ENV GO111MODULE=on CGO_ENABLED=0
 
 COPY . .
 
-RUN go mod download
+# RUN go mod download
 RUN GOOS=linux go build -a -installsuffix cgo -o shippy-service-vessel
 
 # Run container
@@ -22,4 +22,4 @@ RUN mkdir /app
 WORKDIR /app
 COPY --from=builder /app/shippy-service-vessel .
 
-CMD ["./shippy-service-consignment"]
+CMD ["./shippy-service-vessel"]
